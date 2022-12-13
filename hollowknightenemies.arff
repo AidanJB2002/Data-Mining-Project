@@ -1,0 +1,219 @@
+% Hollow Knight enemy stats
+% Various statistics from every enemy in the game Hollow Knight
+% 
+% Using this data, I want to predict whether the enemy is a normal enemy, a passive enemy, a midboss, or a boss
+% All data is retrieved from the Hollow Knight Fandom wiki:
+% https://hollowknight.fandom.com/wiki/Category:Enemies_(Hollow_Knight)
+%
+% Attributes:
+%
+% 1. Name (Self explanatory (this attribute mostly exists for the sake of my own sanity while writing this))
+% 2. Health (Self explanatory (highest possible health if dependent, combined health if spread across multiple targets or phases))
+% 3. Damage (Whether the enemy deals one, two, or no points of damage to the player (if marked "dependent," the amount of damage taken depends on how many times the player has already defeated the boss enemy))
+% 4. Geo (How much geo (in-game currency) the enemy drops on death if a greed charm isn't equipped)
+% 5. Drops (Does the enemy drop anything other than geo on death?)
+% 6. Hunter_kills (How many times you have to kill/defeat the enemy to unlock their Hunter's Journal entry)
+% 7. Class (Normal enemy, passive enemy, midboss, or boss)
+%
+% 182 Instances
+%
+% 2 Excluded enemies: Hunter, Tiso
+%                     Both are not actual enemies, only fake-out fights that don't actually happen
+%
+% Note: Attributes marked with ? are not applicable to that enemy for one reason or another
+%       Some are unkillable, some also don't have Hunter's Journal entries or don't need to be killed to accquire their entry
+%       The Shade is a special case because the amount of geo it drops entirely depends on how much geo the player had when they last died (which can be literally any amount from 0 to 9,999,999)
+%
+% If you plan to run any algorithms on the data, it's reccomended that you remove the name attribute
+%
+@relation hollow-knight-enemies
+@attribute name string
+@attribute health real
+@attribute damage { 0, 1, 2, dependent}
+@attribute geo real
+@attribute drops { yes, no}
+@attribute hunter_kills real
+@attribute class { normal, passive, midboss, boss}
+@data
+absolute_radiance,2181,2,0,no,?,boss
+aluba,1,1,0,no,1,normal
+ambloom,12,1,2,no,15,normal
+armoured_squit,40,1,0,no,15,normal
+aspid_hatchling,5,1,0,no,30,normal
+aspid_hunter,15,1,6,no,20,normal
+aspid_mother,20,1,10,no,15,normal
+baldur,15,1,4,no,20,normal
+battle_obble,70,1,0,no,15,normal
+belfly,5,2,0,no,15,normal
+bluggsac,20,0,0,yes,5,passive
+boofly,40,1,8,no,20,normal
+broken_vesssel,525,1,0,no,1,boss
+brooding_mawlek,300,1,0,yes,1,midboss
+brothers_oro_and_mato,2100,1,0,no,1,boss
+carver_hatcher,35,1,25,no,15,normal
+charged_lumafly,?,1,?,?,?,normal
+collector,850,1,0,no,1,boss
+corpse_creeper,33,1,10,no,15,normal
+cowardly_husk,20,1,9,no,25,normal
+crawlid,8,1,2,no,0,normal
+crystal_crawler,15,1,8,no,15,normal
+crystal_guardian,280,1,385,no,2,midboss
+crystal_hunter,25,1,7,no,20,normal
+crystallised_husk,35,1,20,no,15,normal
+death_loodle,45,1,0,no,15,normal
+deephunter,18,1,7,no,20,normal
+deepling,15,1,0,no,25,normal
+dirtcarver,20,1,6,no,35,normal
+dung_defender,900,1,0,yes,1,boss
+duranda,30,1,4,no,8,normal
+durandoo,30,1,6,no,8,normal
+elder_baldur,60,1,50,no,1,normal
+elder_hu,650,1,0,yes,1,midboss
+enraged_guardian,600,2,550,no,2,midboss
+entombed_husk,45,2,15,no,10,normal
+failed_champion,1260,2,0,yes,?,boss
+false_knight,355,1,0,yes,1,boss
+fluke_larva,1,0,0,no,?,passive
+flukefey,13,1,0,no,15,normal
+flukemarm,350,1,0,yes,1,midboss
+flukemon,55,1,12,no,20,normal
+flukemunga,150,2,23,no,8,normal
+fluke_zoteling,100,1,0,no,?,normal
+folly,13,1,5,no,15,normal
+fool_eater,16,1,9,no,15,normal
+fungified_husk,15,1,5,no,10,normal
+fungling,10,1,2,no,30,normal
+fungoon,15,1,6,no,20,normal
+furious_vengefly,40,2,20,no,15,normal
+galien,640,1,0,yes,1,midboss
+garpede,?,1,?,?,?,normal
+glimback,35,1,6,no,15,normal
+gluttonous_husk,30,1,11,no,25,normal
+goam,?,1,?,?,?,normal
+god_tamer,1050,1,0,no,1,boss
+gorb,570,1,0,yes,1,midboss
+gorgeous_husk,220,1,420,no,1,normal
+great_hopper,130,1,30,no,10,normal
+great_husk_sentry,170,2,50,no,10,normal
+great_nailsage_sly,1050,1,0,no,1,boss
+grey_prince_zote,1500,dependent,0,yes,1,boss
+grimm,1000,1,0,no,1,boss
+grimmkin_master,240,1,0,yes,1,midboss
+grimmkin_nightmare,320,2,0,yes,1,midboss
+grimmkin_novice,160,1,0,yes,1,midboss
+grub_mimic,45,1,0,no,5,normal
+gruz_mother,140,1,50,no,3,midboss
+gruzzer,8,1,2,no,25,normal
+gulka,10,1,6,no,15,normal
+head_of_zote,200,1,0,no,?,normal
+heavy_fool,90,1,0,no,20,normal
+heavy_sentry,35,1,10,no,20,normal
+heavy_zoteling,190,1,0,no,?,normal
+hive_guardian,100,2,25,no,12,normal
+hive_knight,920,1,0,no,1,boss
+hive_soldier,65,1,15,no,15,normal
+hiveling,18,1,0,no,30,normal
+hollow_knight,1250,1,0,no,1,boss
+hopper,50,1,16,no,25,normal
+hopping_zoteling,60,1,0,no,1,normal
+hornet_protector,225,1,0,no,2,boss
+hornet_sentinel,700,1,0,no,2,boss
+husk_bully,15,1,3,no,35,normal
+husk_dandy,20,1,9,no,25,normal
+husk_guard,70,2,45,no,6,normal
+husk_hive,60,1,16,no,10,normal
+husk_hornhead,15,1,4,no,35,normal
+husk_miner,25,1,10,no,20,normal
+husk_sentry,28,1,10,no,25,normal
+husk_warrior,15,1,6,no,10,normal
+hwurmp,25,1,5,no,20,normal
+infected_balloon,15,1,5,no,10,normal
+kingsmould,170,2,0,no,2,normal
+lance_sentry,25,1,12,no,25,normal
+lanky_zoteling,150,1,0,no,?,normal
+leaping_husk,15,1,3,no,35,normal
+lesser_mawlek,60,1,18,no,10,normal
+lifeseed,1,0,0,yes,10,passive
+lightseed,1,0,0,no,20,passive
+little_weaver,30,1,17,no,20,normal
+loodle,30,1,9,no,15,normal
+lost_kin,1200,1,0,yes,?,boss
+maggot,1,0,2,no,2,passive
+mantis_lords,530,1,0,no,1,boss
+mantis_petra,45,1,12,no,16,normal
+mantis_traitor,74,1,22,no,15,normal
+mantis_warrior,20,1,12,no,25,normal
+mantis_youth,15,1,5,no,25,normal
+markoth,705,1,0,yes,1,midboss
+marmu,570,1,0,yes,1,midboss
+maskfly,1,0,0,no,15,passive
+massive_moss_charger,100,1,300,no,1,midboss
+mawlurk,135,1,25,no,10,normal
+menderbug,1,0,0,no,1,passive
+mistake,13,1,3,no,25,normal
+moss_charger,15,1,8,no,15,normal
+moss_knight,50,1,40,no,8,normal
+mosscreep,10,1,2,no,30,normal
+mossfly,15,1,2,no,25,normal
+mosskin,15,1,3,no,25,normal
+mossy_vagabond,25,1,8,no,10,normal
+myla,20,1,10,no,?,normal
+nightmare_king_grimm,1500,2,0,no,1,boss
+no_eyes,570,1,0,yes,1,midboss
+nosk,680,1,0,no,1,boss
+obble,10,1,4,no,20,normal
+oblobble,620,1,0,no,3,midboss
+ooma,1,2,5,no,12,normal
+paintmaster_sheo,950,1,0,no,1,boss
+pale_lurker,400,1,0,yes,1,midboss
+pilflip,30,1,5,no,20,normal
+primal_aspid,35,1,6,no,25,normal
+pure_vessel,1600,2,0,no,1,boss
+radiance,1700,2,0,no,1,boss
+revek,?,2,0,yes,?,normal
+royal_retainer,5,0,0,no,10,passive
+shade,84,1,?,no,0,normal
+shadow_creeper,20,1,2,no,20,normal
+shardmite,15,1,2,no,15,normal
+sharp_baldur,65,1,0,no,20,normal
+shielded_fool,65,1,0,no,25,normal
+shrumal_ogre,80,1,45,no,8,normal
+shrumal_warrior,20,1,8,no,20,normal
+shrumeling,5,0,0,no,20,passive
+sibling,20,2,0,no,25,normal
+sisters_of_battle,2750,1,0,no,1,boss
+slobbering_husk,30,1,17,no,15,normal
+soul_master,385,1,0,yes,1,boss
+soul_twister,35,1,25,no,20,normal
+soul_tyrant,1250,1,0,yes,?,boss
+soul_warrior,300,1,200,no,2,midboss
+spiny_husk,44,1,12,no,20,normal
+sporg,25,2,3,no,20,normal
+squit,10,1,5,no,25,normal
+stalking_devout,100,2,43,no,15,normal
+sturdy_fool,80,1,0,no,25,normal
+tiktik,8,1,2,no,30,normal
+traitor_lord,800,2,0,no,1,boss
+turret_zoteling,100,1,0,no,?,normal
+uoma,1,1,0,no,20,normal
+uumuu,300,1,0,no,1,boss
+vengefly,8,1,3,no,45,normal
+vengefly_king,100,1,65,no,2,midboss
+violent_husk,40,2,15,no,15,normal
+void_tendrils,?,1,?,?,?,normal
+volatile_gruzzer,40,1,15,no,15,normal
+volatile_mosskin,15,1,5,no,25,normal
+volatile_zoteling,30,2,0,no,1,normal
+volt_twister,80,1,0,no,6,normal
+wandering_husk,15,1,3,no,35,normal
+watcher_knight,1560,1,0,no,1,boss
+white_defender,1600,dependent,0,yes,1,boss
+winged_fool,70,1,0,no,25,normal
+winged_nosk,750,1,0,no,1,boss
+winged_sentry,25,1,12,no,30,normal
+winged_zoteling,60,1,0,no,1,normal
+wingmould,999,1,0,no,10,normal
+xero,570,1,0,yes,1,midboss
+zote,200,0,0,no,1,boss
+zoteling,120,1,0,no,?,normal
+zotes_curse,100,0,0,no,?,normal

@@ -1,0 +1,98 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.meta.AdaBoostM1 -P 100 -S 1 -I 10 -W weka.classifiers.trees.DecisionStump
+Relation:     hollow-knight-enemies-weka.filters.unsupervised.attribute.Remove-R1
+Instances:    182
+Attributes:   6
+              health
+              damage
+              geo
+              drops
+              hunter_kills
+              class
+Test mode:    15-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+AdaBoostM1: Base classifiers and their weights: 
+
+Decision Stump
+
+Classifications
+
+health <= 222.5 : normal
+health > 222.5 : boss
+health is missing : normal
+
+Class distributions
+
+health <= 222.5
+normal	passive	midboss	boss	
+0.8923076923076924	0.06923076923076923	0.03076923076923077	0.007692307692307693	
+health > 222.5
+normal	passive	midboss	boss	
+0.02127659574468085	0.0	0.3404255319148936	0.6382978723404256	
+health is missing
+normal	passive	midboss	boss	
+1.0	0.0	0.0	0.0	
+
+
+Weight: 1.58
+
+Decision Stump
+
+Classifications
+
+health <= 95.0 : normal
+health > 95.0 : midboss
+health is missing : normal
+
+Class distributions
+
+health <= 95.0
+normal	passive	midboss	boss	
+0.6973273942093537	0.30267260579064614	0.0	0.0	
+health > 95.0
+normal	passive	midboss	boss	
+0.13059147763408965	9.685712847419515E-18	0.6402374390502436	0.2291710833156667	
+health is missing
+normal	passive	midboss	boss	
+1.0	0.0	0.0	0.0	
+
+
+Weight: 0.72
+
+Number of performed Iterations: 2
+
+
+Time taken to build model: 0 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances         148               81.3187 %
+Incorrectly Classified Instances        34               18.6813 %
+Kappa statistic                          0.5952
+Mean absolute error                      0.1943
+Root mean squared error                  0.279 
+Relative absolute error                 75.7444 %
+Root relative squared error             78.3045 %
+Total Number of Instances              182     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.975    0.250    0.888      0.975    0.930      0.774    0.894     0.929     normal
+                 0.000    0.000    ?          0.000    ?          ?        0.465     0.050     passive
+                 0.000    0.000    ?          0.000    ?          ?        0.749     0.210     midboss
+                 0.935    0.126    0.604      0.935    0.734      0.691    0.925     0.564     boss
+Weighted Avg.    0.813    0.189    ?          0.813    ?          ?        0.862     0.744     
+
+=== Confusion Matrix ===
+
+   a   b   c   d   <-- classified as
+ 119   0   0   3 |   a = normal
+   9   0   0   0 |   b = passive
+   4   0   0  16 |   c = midboss
+   2   0   0  29 |   d = boss
+
